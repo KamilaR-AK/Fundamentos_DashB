@@ -172,7 +172,7 @@ body {
     position: fixed; 
     left: 50%;
     transform: translateX(-50%);
-    margin-top: -10px; /* Separación hacia arriba */
+    margin-top: -10px; 
     padding: 8px 12px;
     background-color: var(--text-primary);
     color: var(--bg-light);
@@ -180,13 +180,11 @@ body {
     max-width: 300px;
     white-space: normal;
     font-size: 0.75rem;
-    z-index: 99999; /* Z-index MUY alto */
+    z-index: 99999; 
     box-shadow: 0 5px 15px var(--shadow-deep);
 
-    /* Posición (usamos CSS para un mejor centrado horizontal) */
     top: auto; 
     bottom: auto; 
-    /* El JS ahora solo agrega la clase para activarlo */
 }
 .metric-item.tooltip-active::before {
     content: "";
@@ -196,11 +194,9 @@ body {
     background-color: var(--text-primary);
     z-index: 99998;
     
-    /* Centrado horizontal */
     left: 50%;
     transform: translateX(-50%) translateY(2px) rotate(45deg);
 
-    /* Posición vertical (ajustar manualmente la flecha al tooltip) */
     top: auto; 
     bottom: auto;
 }
@@ -228,7 +224,7 @@ body {
 /* --- Modal (Z-index alto) --- */
 .modal {
     position: fixed;
-    z-index: 1000; /* Alto pero debajo del tooltip */
+    z-index: 1000; 
     left: 0;
     top: 0;
     width: 100%;
@@ -253,7 +249,7 @@ body {
     opacity: 0;
     transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
-.modal.is-open { display: flex; } /* El JS activa display:flex primero */
+.modal.is-open { display: flex; } 
 .modal.is-open .modal-content {
     transform: scale(1);
     opacity: 1;
@@ -311,7 +307,7 @@ body {
 .text-purple { color: var(--purple); }
 .text-success { color: var(--success); }
 .text-warning { color: var(--warning); }
-.text-danger { color(--danger); } 
+.text-danger { color: var(--danger); } 
 
 @media (max-width: 768px) {
     .grid-container { grid-template-columns: 1fr; }
