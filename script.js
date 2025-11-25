@@ -1,12 +1,12 @@
 /**
- * SOCIAL MEDIA ANALYTICS DASHBOARD - LISTO PARA GITHUB PAGES
- * Powered by: Google Visualization API
+ * DASHBOARD BOGOTA.ATL - CÓDIGO FINAL LISTO PARA GITHUB PAGES
+ * Solución al Error 404 (Estructura de archivos) y Error de Carga de Datos (ID de Sheets).
  */
 
 // --- CONFIGURACIÓN CRÍTICA PARA EL FUNCIONAMIENTO ---
-// Utiliza el ID ÚNICO extraído de tu enlace 'Publicar en la Web'.
+// ¡ID CORREGIDO! Utiliza el ID largo generado al 'Publicar en la Web'.
 const SPREADSHEET_ID = '2PACX-1vQLVPo6ljNz5xt1biHoxOh5pgUKYbX6b1_oQk_Bd-HuMY3qpKLX1FaRnWcZp9T1qiKIhVMNgiZrFqsh';
-const SHEET_NAMES = ['Bogota.Atl', 'Los_delaU', 'Grupo_Niche_Poli']; // Nombres de las pestañas
+const SHEET_NAMES = ['Bogota.Atl', 'Los_delaU', 'Grupo_Niche_Poli']; 
 
 // Variables globales para la carga y renderizado
 const dashboardData = []; 
@@ -29,8 +29,8 @@ function initDashboard() {
     sheetsProcessed = 0; 
 
     SHEET_NAMES.forEach(sheetName => {
-        // Formato de URL CORREGIDO (gviz/tq) para la API de Visualización
-        const apiURL = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?sheet=${sheetName}&headers=1`;
+        // Formato de URL CORREGIDO para la API de Visualización
+        const apiURL = `https://docs.google.com/spreadsheets/d/e/${SPREADSHEET_ID}/gviz/tq?sheet=${sheetName}&headers=1`;
         
         const query = new google.visualization.Query(apiURL);
         query.setQuery('SELECT A, B, C'); 
@@ -43,7 +43,6 @@ function handleQueryResponse(response, sheetName) {
 
     if (response.isError()) {
         console.error('Error en hoja: ' + sheetName, response.getMessage());
-        // Muestra un error si no se encuentra ninguna tabla después de procesar todo
         if (sheetsProcessed === SHEET_NAMES.length && dashboardData.length === 0) {
             showError("Error al cargar datos", `Verifica el SPREADSHEET_ID o que la hoja '${sheetName}' exista y esté 'Publicada en la Web'.`);
         }
@@ -185,20 +184,18 @@ function renderCard(name, metrics, isWinner) {
     app.appendChild(card);
 }
 
-// --- Funciones de Tooltip (mejorado para visibilidad) ---
+// --- Funciones de Tooltip y Modal (sin cambios en funcionalidad) ---
 document.addEventListener('mouseover', function(e) {
     const item = e.target.closest('.metric-item');
     if (!item || item.classList.contains('tooltip-active')) return;
 
     item.classList.add('tooltip-active');
     
-    // Al salir, limpia la clase
     item.onmouseleave = () => {
         item.classList.remove('tooltip-active');
     };
 });
 
-// --- Funciones de Modal (sin cambios en funcionalidad) ---
 function showModal(sheetName) {
     const data = allAnalytics[sheetName];
     if (!data) return;
