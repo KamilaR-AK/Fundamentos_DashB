@@ -1,10 +1,10 @@
 /**
  * DASHBOARD BOGOTA.ATL - CÓDIGO FINAL LISTO PARA GITHUB PAGES
- * Solución al Error 404 (Estructura de archivos) y Error de Carga de Datos (ID de Sheets).
+ * SOLUCIÓN CRÍTICA: Ajuste de la URL de Google Sheets a formato 'e/ID_LARGO/gviz/tq'.
  */
 
 // --- CONFIGURACIÓN CRÍTICA PARA EL FUNCIONAMIENTO ---
-// ¡ID CORREGIDO! Utiliza el ID largo generado al 'Publicar en la Web'.
+// ID extraído de la publicación web:
 const SPREADSHEET_ID = '2PACX-1vQLVPo6ljNz5xt1biHoxOh5pgUKYbX6b1_oQk_Bd-HuMY3qpKLX1FaRnWcZp9T1qiKIhVMNgiZrFqsh';
 const SHEET_NAMES = ['Bogota.Atl', 'Los_delaU', 'Grupo_Niche_Poli']; 
 
@@ -29,7 +29,7 @@ function initDashboard() {
     sheetsProcessed = 0; 
 
     SHEET_NAMES.forEach(sheetName => {
-        // Formato de URL CORREGIDO para la API de Visualización
+        // Formato de URL CORREGIDO para la API de Visualización con el prefijo /d/e/
         const apiURL = `https://docs.google.com/spreadsheets/d/e/${SPREADSHEET_ID}/gviz/tq?sheet=${sheetName}&headers=1`;
         
         const query = new google.visualization.Query(apiURL);
